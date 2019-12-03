@@ -5,6 +5,7 @@ h1 {
     color:white;
     text-align: center;
 }
+
 .square{
     width: 30%;
     padding-bottom: 30%;
@@ -15,4 +16,8 @@ h1 {
 .container{
     max-width: 600px;
     margin: 0 auto;
+}
+.msgDisplay{
+    color: #f2f2f2;
+    text-align: center; 
 }

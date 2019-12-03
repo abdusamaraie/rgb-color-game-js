@@ -5,6 +5,9 @@ var squares = document.querySelectorAll('.square');
 var pickedColor = document.getElementById('pickedColor');
 pickedColor.textContent = pickColor();
 var msgDisplay = document.querySelector('.msgDisplay')
+var h1 = document.querySelector('h1');
+var reset = document.querySelector("#reset");
+// change squares colors based on random picked color
 function changeColor(){
     for(var i=0; i < squares.length;i++){
         squares[i].style.backgroundColor = colors[i];
@@ -13,7 +16,9 @@ function changeColor(){
             if(clickedColor === pickedColor.textContent){
                 msgDisplay.textContent = "Correct!";
                 changeAllColors(clickedColor);
-
+                h1.style.background = clickedColor;
+                //change the button text 
+                reset.textContent = 'Play Again?';
             }else{
                 this.style.backgroundColor =  "#232323";
                 msgDisplay.textContent = "Wrong, try again!"
@@ -58,3 +63,18 @@ function randomColor(){
 
     return "rgb("+ r + ", " + g + ", " + b +")"; 
 }
+
+
+//reset game
+reset.addEventListener('click',function(){
+    //generate new random colors
+    colors = generateRandomColors(6);
+    //reset h1 background color
+    h1.style.background = "#232323";
+    ///pick a random color
+    pickedColor.textContent = pickColor();
+    //change colors of squares
+    changeColor();
+    //reset button text
+    this.textContent = 'New Colors';
+})

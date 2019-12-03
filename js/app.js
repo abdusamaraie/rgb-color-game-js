@@ -7,6 +7,9 @@ pickedColor.textContent = pickColor();
 var msgDisplay = document.querySelector('.msgDisplay')
 var h1 = document.querySelector('h1');
 var reset = document.querySelector("#reset");
+var easyBtn = document.querySelector('#easy');
+var hardBtn = document.querySelector('#hard');
+var numSquares = 6;
 // change squares colors based on random picked color
 function changeColor(){
     for(var i=0; i < squares.length;i++){
@@ -68,7 +71,7 @@ function randomColor(){
 //reset game
 reset.addEventListener('click',function(){
     //generate new random colors
-    colors = generateRandomColors(6);
+    colors = generateRandomColors(numSquares);
     //reset h1 background color
     h1.style.background = "#232323";
     ///pick a random color
@@ -77,4 +80,38 @@ reset.addEventListener('click',function(){
     changeColor();
     //reset button text
     this.textContent = 'New Colors';
+    msgDisplay.textContent = '';
+
+})
+
+//easy button clicked
+easyBtn.addEventListener('click',function(){
+    this.classList.add('selected');
+    hardBtn.classList.remove('selected');
+    numSquares = 3;
+    colors = generateRandomColors(numSquares);
+    pickedColor.textContent  = pickColor();
+    for(let i=0;i<squares.length;i++){
+        if(colors[i]){
+            squares[i].style.backgroundColor = colors[i];
+        }else{
+            squares[i].style.display = "none";
+        }
+    }
+
+})
+
+//easy button clicked
+hardBtn.addEventListener('click',function(){
+    this.classList.add('selected');
+    easyBtn.classList.remove('selected');
+    numSquares = 6;
+    colors = generateRandomColors(numSquares);
+    pickedColor.textContent  = pickColor();
+    for(let i=0;i<squares.length;i++){
+
+    squares[i].style.backgroundColor = colors[i];
+    squares[i].style.display = 'block';
+    }
+
 })

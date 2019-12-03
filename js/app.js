@@ -73,7 +73,7 @@ reset.addEventListener('click',function(){
     //generate new random colors
     colors = generateRandomColors(numSquares);
     //reset h1 background color
-    h1.style.background = "#232323";
+    h1.style.background = "steelblue";
     ///pick a random color
     pickedColor.textContent = pickColor();
     //change colors of squares
